@@ -1,30 +1,48 @@
 #include <stdio.h>
-
+ 
+#define TAM 10
+#define AGUA 0
+#define NAVIO 3
+#define TAM_NAVIO 3
+ 
 int main() {
-    int tabuleiro[10][10] = {0};  // inicializa tudo com zero
-
-    // Coordenadas fixas dos navios
-    int navio1_linha = 1;
-    int navio1_coluna = 2;
-    // Navio 1 horizontal, tamanho 3
-    for (int i = 0; i < 3; i++) {
-        tabuleiro[navio1_linha][navio1_coluna + i] = 3;
+    int tabuleiro[TAM][TAM];
+    int i, j;
+ 
+    // Inicializa tabuleiro com água
+    for (i = 0; i < TAM; i++) {
+        for (j = 0; j < TAM; j++) {
+            tabuleiro[i][j] = AGUA;
+        }
     }
-
-    int navio2_linha = 4;
-    int navio2_coluna = 5;
-    // Navio 2 vertical, tamanho 3
-    for (int i = 0; i < 3; i++) {
-        tabuleiro[navio2_linha + i][navio2_coluna] = 3;
+ 
+    // Navio horizontal (linha 2, colunas 1 a 3)
+    for (j = 1; j < 1 + TAM_NAVIO; j++) {
+        tabuleiro[4][j] = NAVIO;
     }
-
-    // Imprime o tabuleiro
-    for (int linha = 0; linha < 10; linha++) {
-        for (int coluna = 0; coluna < 10; coluna++) {
-            printf("%d ", tabuleiro[linha][coluna]);
+ 
+    // Navio vertical (coluna 5, linhas 5 a 7)
+    for (i = 5; i < 5 + TAM_NAVIO; i++) {
+        tabuleiro[i][5] = NAVIO;
+    }
+ 
+    // Navio diagonal principal (0,0 até 2,2)
+    for (i = 0; i < TAM_NAVIO; i++) {
+        tabuleiro[i][i] = NAVIO;
+    }
+ 
+    // Navio diagonal secundária (0,9 até 2,7)
+    for (i = 0; i < TAM_NAVIO; i++) {
+        tabuleiro[i][9 - i] = NAVIO;
+    }
+ 
+    // Exibe tabuleiro
+    for (i = 0; i < TAM; i++) {
+        for (j = 0; j < TAM; j++) {
+            printf("%d ", tabuleiro[i][j]);
         }
         printf("\n");
     }
-
+ 
     return 0;
 }
