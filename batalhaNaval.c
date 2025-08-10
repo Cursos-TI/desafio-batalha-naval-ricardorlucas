@@ -16,22 +16,22 @@ int main() {
         }
     }
  
-    // Navio horizontal (linha 2, colunas 1 a 3)
+    // Navio horizontal
     for (j = 1; j < 1 + TAM_NAVIO; j++) {
         tabuleiro[4][j] = NAVIO;
     }
  
-    // Navio vertical (coluna 5, linhas 5 a 7)
+    // Navio vertical
     for (i = 5; i < 5 + TAM_NAVIO; i++) {
         tabuleiro[i][5] = NAVIO;
     }
  
-    // Navio diagonal principal (0,0 até 2,2)
+    // Navio diagonal principal
     for (i = 0; i < TAM_NAVIO; i++) {
         tabuleiro[i][i] = NAVIO;
     }
  
-    // Navio diagonal secundária (0,9 até 2,7)
+    // Navio diagonal secundária
     for (i = 0; i < TAM_NAVIO; i++) {
         tabuleiro[i][9 - i] = NAVIO;
     }
